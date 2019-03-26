@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  unless TestTrack.enabled?
+  if Rails.env.development? # can't use TestTrack.enabled? here because then the Remote:: models don't make API calls.
     namespace :tt do
       namespace :api do
         namespace :v1 do
           resource :split_registry, only: :show
 
           resource :assignment, only: :create
+
+          resource :assignment_event, only: :create
+
+          resource :assignment_override, only: :create
 
           resource :identifier, only: :create
 
@@ -22,8 +26,6 @@ Rails.application.routes.draw do
 
           resources :split_configs, only: [:create, :destroy]
           resource :identifier_type, only: :create
-
-          resource :reset, only: :update
         end
       end
     end

@@ -8,25 +8,16 @@ class TestTrack::FakeServer
       TestTrack::Fake::SplitDetail.new(name).details
     end
 
-    def visitor
-      TestTrack::Fake::Visitor.instance
+    def visitor_by_id(id)
+      TestTrack::Fake::Visitor.for_id(id)
     end
 
     def visitor_details
       TestTrack::Fake::VisitorDetail.instance
     end
 
-    def assignments
-      TestTrack::Fake::Visitor.instance.assignments
-    end
-
-    def reset!(seed)
-      TestTrack::Fake::Visitor.reset!
-      @seed = Integer(seed)
-    end
-
-    def seed
-      @seed || raise('TestTrack::FakeServer seed not set. Call TestTrack::FakeServer.reset!(seed) to set seed.')
+    def assignments_for_visitor_id(id)
+      visitor_by_id(id).assignments
     end
   end
 end

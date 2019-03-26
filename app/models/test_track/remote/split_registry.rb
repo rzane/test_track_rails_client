@@ -1,9 +1,10 @@
 class TestTrack::Remote::SplitRegistry
+  URL = 'api/v1/split_registry'.freeze
   include TestTrack::RemoteModel
 
   CACHE_KEY = 'test_track_split_registry'.freeze
 
-  collection_path '/api/v1/split_registry'
+  collection_path(URL)
 
   def self.fake_instance_attributes(_)
     ::TestTrack::Fake::SplitRegistry.instance.to_h
@@ -14,7 +15,7 @@ class TestTrack::Remote::SplitRegistry
     if faked?
       new(fake_instance_attributes(nil))
     else
-      get('/api/v1/split_registry')
+      get(URL)
     end
   end
 
