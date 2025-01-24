@@ -8,6 +8,7 @@ TestTrack::TestTrackApi = Her::API.new.setup url: ENV['TEST_TRACK_API_URL'] do |
   # response
   c.use TestTrack::ServerErrorMiddleware
   c.use Her::Middleware::DefaultParseJSON
+  c.use Faraday::Response::RaiseError
 
   c.adapter Faraday.default_adapter
 
