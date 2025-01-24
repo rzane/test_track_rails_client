@@ -1,3 +1,8 @@
+require 'active_support'
+
+# This is removed in Rails 8, but the newest version of Her still depends on it
+ActiveSupport::ProxyObject = BasicObject unless ActiveSupport.const_defined?(:ProxyObject)
+
 require 'her'
 
 # Source vendored gems the hard way in all environments
