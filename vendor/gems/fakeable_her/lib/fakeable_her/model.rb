@@ -68,11 +68,11 @@ module FakeableHer
         end
       end
 
-      def destroy_existing(id, params = {}, headers = {})
+      def destroy_existing(id, params = {})
         if faked?
           new(_destroyed: true)
         else
-          super id, params, headers
+          super id, params
         end
       end
 
