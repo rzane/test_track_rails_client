@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activemodel', rails_constraints
   s.add_dependency "faraday", ">= 0.8"
   s.add_dependency 'faraday_middleware'
+  s.add_dependency 'her'
   s.add_dependency 'mixpanel-ruby', '~> 1.4'
   s.add_dependency 'multi_json', '~> 1.7'
   s.add_dependency 'public_suffix', '>= 2.0.0'
